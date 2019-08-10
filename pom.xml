@@ -2,12 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.7.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>io.pivotal.dfrey.scst</groupId>
 	<artifactId>scst-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -31,12 +33,6 @@
 			<artifactId>spring-boot-starter-json</artifactId>
 		</dependency>
 
-		<!-- Spring dependencies -->
-		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka</artifactId>
-		</dependency>
-
 		<!-- Spring Cloud Stream dependencies -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -48,11 +44,6 @@
 		</dependency>
 
 		<!-- Third-party dependencies -->
-<!--		<dependency>-->
-<!--			<groupId>com.fasterxml.jackson.core</groupId>-->
-<!--			<artifactId>jackson-databind</artifactId>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
 			<artifactId>kafka-streams</artifactId>
@@ -77,8 +68,8 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka-test</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream-test-support</artifactId>
 			<scope>test</scope>
 		</dependency>
 

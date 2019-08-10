@@ -1,9 +1,13 @@
 
 eventIds: 0dc58e03-4864-4cdb-8cf9-c5c1d01949fc, 55f8c3f0-c606-41ac-ad30-6ec22a5b8e6f, 722efd8f-f06c-49c3-b88c-90c3b43c8489, b92cb406-6fbc-45e9-b220-4b9bbc9b9f43, 494345a0-dc42-4323-9452-b922e211a56c
 
+server:
+  port: 8081
+
 logging.level:
+  org.apache.kafka: WARN
   org.springframework.cloud.stream: INFO
-  io.pivotal.dfrey.scstdemo: DEBUG
+  io.pivotal.dfrey: DEBUG
 
 spring:
 

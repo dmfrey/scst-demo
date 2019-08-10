@@ -10,10 +10,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
+
+import static java.util.Collections.singletonList;
 
 @Slf4j
 @SpringBootApplication
@@ -22,6 +21,9 @@ public class Application {
 
 	@Autowired
 	private MessageSender messageSender;
+
+	@Autowired
+	private EventLogger eventLogger;
 
 	@Value( "${eventIds}" )
 	private String[] eventIds;
@@ -37,11 +39,19 @@ public class Application {
 	public void sendEvents() {
 
 		Random random = new Random();
-		UUID eventId = UUID.fromString( eventIds[ random.nextInt( eventIds.length - 1 ) ] );
+		UUID eventId = UUID.fromString( eventIds[ random.nextInt( eventIds.length ) ] );
 		Instant occurredOn = Instant.now();
 
 		EventRecorded eventRecorded = new EventRecorded( eventId, "test", occurredOn );
-		log.info( "sendEvents : eventRecorded={}", eventRecorded );
+		log.debug( "sendEvents : eventRecorded={}", eventRecorded );
+		messageSender.processEvents( eventId, singletonList( eventRecorded ) );
+
+	}
+
+	@Scheduled( initialDelay = 1000, fixedDelay = 5000 )
+	public void logEvents() {
+
+		eventLogger.logEventsById();
 
 	}
 
